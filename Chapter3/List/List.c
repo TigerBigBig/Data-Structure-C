@@ -15,7 +15,7 @@
             PointerToSqList p = &L;
             function( p );   
 */
-
+#include <stdlib.h>
 #define LIST_INIT_SIZE 100
 #define LISTINCREMENT p->listsize + p->length - p->listsize + 1
 typedef struct SqList
