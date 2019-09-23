@@ -1,7 +1,14 @@
 /*
     由于课本上用了c++的参数传递方法,在c中使用如下方法替换:
         c++: function( SqList &L ){}
-        c : typedef struct SqList *PointerToSqList
+        c : 
+            typedef struct SqList
+            {
+                ElemType *elem;
+                int length;
+                int listsize;
+            }SqList, *PointerToSqList;
+            
          function( PointerToSqList p ){} 
          调用: 
             SqList L;
@@ -11,13 +18,12 @@
 
 #define LIST_INIT_SIZE 100
 #define LISTINCREMENT p->listsize + p->length - p->listsize + 1
-typedef struct
+typedef struct SqList
 {
     ElemType *elem;
     int length;
     int listsize;
-}SqList;
-typedef struct SqList *PointerToSqList;
+}SqList, *PointerToSqList;
 typedef int ElemType;
 typedef int Status;
 
