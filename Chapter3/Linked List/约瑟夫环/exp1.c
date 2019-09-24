@@ -2,27 +2,27 @@
 #include <stdio.h>
 
 struct Node;
-typedef struct Node* List;
+typedef struct Node* pNode;
 typedef int ElementType;
 
 struct Node
 {
 	int number;
 	ElementType Element;
-	List Next;
+	pNode Next;
 };
 
 /* Create a linked list */
-void InitList(List L)
+void InitList(pNode L)
 {
-	L = (List)malloc(sizeof(struct Node));
+	L = (pNode)malloc(sizeof(struct Node));
 	L->Next = NULL;
 }
 
 /* Delete node that p points to */
-void Delete(List p)
+void Delete(pNode p)
 {
-	List previous = p;
+	pNode previous = p;
 	while (previous->Next != p && previous->Next != NULL) {
 		previous = previous->Next;
 	}
@@ -33,11 +33,11 @@ void Delete(List p)
 
 /* Insert a node after position P */
 
-void Add(ElementType X, List P)
+void Add(ElementType X, pNode P)
 {
-	List newNode = NULL;
+	pNode newNode = NULL;
 
-	newNode = (List)malloc(sizeof(struct Node));
+	newNode = (pNode)malloc(sizeof(struct Node));
 	
 	newNode->Element = X;
 	newNode->Next = NULL;
@@ -45,9 +45,9 @@ void Add(ElementType X, List P)
 }
 
 /* Get the last element's position */
-List Last(List L)
+pNode Last(pNode L)
 {
-	List p = NULL;
+	pNode p = NULL;
 	p = L;
 	while (p->Next != NULL) {
 		p = p->Next;
@@ -56,7 +56,7 @@ List Last(List L)
 }
 
 /* get the x th element after p */
-List GetPosition(List p, int x)
+pNode GetPosition(pNode p, int x)
 {
 	int i;
 	for (i = 0; i < x && p->Next != NULL; i++) {
@@ -66,10 +66,10 @@ List GetPosition(List p, int x)
 }
 
 /* Put an array[n] in a list, */
-void PutArrayInList(List L, int array[], int n)
+void PutArrayInList(pNode L, int array[], int n)
 {
 	int i;
-	List position = NULL;
+	pNode position = NULL;
 	position = L;
 	for (i = 0; i < n; i++) {
 		Add(array[i], position);
@@ -80,9 +80,9 @@ void PutArrayInList(List L, int array[], int n)
 }
 
 /* switch a single linked list to a circylar linked list */
-List SwitchToCircylarLinkList(List L)
+pNode SwitchToCircylarLinkList(pNode L)
 {
-	List position = NULL, deletePosition = NULL;
+	pNode position = NULL, deletePosition = NULL;
 	position = Last(L);
 	position->Next = L->Next;
 	deletePosition = L;
@@ -93,7 +93,7 @@ List SwitchToCircylarLinkList(List L)
 int main(){
 	int n, m, i, pchange, keys[n];
 	struct Node node;
-	List list,position,deletedPosition;
+	pNode list,position,deletedPosition;
 	list = &node;
 	scanf("%d %d", &n, &m);
 	for(i = 0; i < n ; i++ ){
