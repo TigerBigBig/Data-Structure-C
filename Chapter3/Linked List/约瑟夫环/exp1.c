@@ -20,6 +20,7 @@ void InitList(pNode L)
 }
 
 /* Delete node that p points to */
+/* Only for circylar linked list */
 void Delete(pNode p)
 {
 	pNode previous = p;
@@ -108,19 +109,19 @@ int main(){
 	position = list;
 	for(i=0;n>0;i++){
 		
-		pchange = m%n-1;
+		pchange = m%n-1;// pchange is position of the next elected player which must be positive
 		while(pchange<0)
 			pchange+=n;
 			 
 		position = GetPosition(position, pchange); //change position to that of next elected player
-		
-		m = position->Element;//get new m value
 		printf("%d ", position->number);//print lucky number
+
+		m = position->Element;//get new m value
 		
 		deletedPosition = position;
 		position = position->Next;//move position in order to get into next round
 		Delete(deletedPosition);//delete elected player
 		
-		n--;//players are less
+		n--;//players decrease
 	}
 }
