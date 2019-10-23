@@ -1,0 +1,8 @@
+﻿  源.cpp
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(14,18): error C2131:  表达式的计算结果不是常数
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(8,21): message :  因读取超过生命周期的变量而失败
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(8,21): message :  请参见“m”的用法
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(14,29): error C2131:  表达式的计算结果不是常数
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(8,32): message :  因读取超过生命周期的变量而失败
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(8,32): message :  请参见“n”的用法
+C:\Users\87853\Documents\GitHub\Data-Structure-C\Chapter4\Maze\源.cpp(18,2): error C2059:  语法错误:“}”
