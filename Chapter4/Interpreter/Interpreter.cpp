@@ -8,7 +8,7 @@ typedef struct STNode
 {
 	SElemType data;
 	struct STNode* next;
-}STNode, * LinkStack;
+}STNode, *LinkStack;
 
 void InitStack(LinkStack& S)
 {
@@ -87,44 +87,67 @@ void Interpret(LinkStack& S)
 
 	while (S!=NULL)
 	{
-		if (letter == ')') Pop(S,letter);
+		if (letter == ')')
+		{
+			Pop(S,letter);
+		}
 		if (letter == 'B')
 		{
-			printf("tsaedsae");
+			std::cout<<"tsaedsae";
 			Pop(S, letter);
 		}
 		if (letter == 'A')
 		{
-			printf("sae");
+			std::cout<<"sae";
 			Pop(S, letter);
+		}
+		if(letter>='a'&&letter<='z')
+		{
+			std::cout<<letter;
+			Pop(S,letter);
+		}
+		if(letter>='0'&&letter<='9')
+		{
+			std::cout<<letter;
+			Pop(S,letter);
 		}
 		if (letter == '(')
 		{
 			Pop(S, letter);
-			while (letter != ')')
+			
+			if(letter!=')')
 			{
-				EnQueue(Q, letter);
-				Pop(S, letter);
-				if (letter == ')')
+				while (letter != ')')
 				{
-					Push(S, ')');
-					break;
+					EnQueue(Q, letter);
+					Pop(S, letter);
+					if (letter == ')')
+					{
+						Push(S, ')');
+						break;
+					}
 				}
-			}
-			DeQueue(Q, theta);
-			while (Q.front!=Q.rear)
-			{
-				DeQueue(Q, letter);
+				DeQueue(Q, theta);
+				while (Q.front!=Q.rear)
+				{
+					DeQueue(Q, letter);
+					Push(S, theta);
+					Push(S, letter);
+				}
 				Push(S, theta);
-				Push(S, letter);
-			}
-			Push(S, theta);
-			while (letter!=')'&&S!=NULL)
-			{
-				Pop(S, letter);
-				if(letter!=')')
-				printf("%c", letter);
-			}
+				while (letter!=')'&&S!=NULL)
+				{
+					Pop(S, letter);
+					if(letter!=')'){
+						if(letter=='A')
+							std::cout<<"sae";
+						else if(letter=='B')
+							std::cout<<"tsaedsae";
+						else std::cout<<letter;
+					}
+						
+				}
+			}else if(letter==')');
 		}
 
 	}
@@ -141,17 +164,18 @@ int main()
 		letter=std::cin.get();
 		Push(S, letter);
 		if (letter == '\n')break;
-	}//入栈
+	}
 	while (S != NULL)
 	{
 		Pop(S, letter);
 		EnQueue(Q, letter);
-	}//出栈入队列
+	}
 	while (Q.front != Q.rear)
 	{
 		DeQueue(Q, letter);
 		Push(S, letter);
-	}//从右至左进栈
+	}
 	Interpret(S);
 	return 0;
 }
+
